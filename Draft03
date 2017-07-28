@@ -1,0 +1,4 @@
+docker run -d -p 80 --name datatest1 microsoft/iis:nanoserver
+docker run -d -p 80:80 --name Pufik microsoft/iis:windowsservercore cmd
+
+docker run -d -p 80:80 -v "$((Get-Location).Path)\site:c:\inetpub\wwwroot\site" --name Hayta microsoft/iis:nanoserver

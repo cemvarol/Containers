@@ -1,0 +1,4 @@
+docker exec -it Hayta powershell
+
+echo "<html><body><h1>88 HAYTA HAYTA HAYTA 88</h1></body></html>" > "c:\inetpub\wwwroot\index.html"
+exit

@@ -1,0 +1,21 @@
+docker run -d -p 80:81 --name Tavuk microsoft/iis:windowsservercore cmd
+docker run -d -p 80:81 --name Tavuk microsoft/iis:windowsservercore cmd
+
+docker exec -it Tavuk powershell
+
+New-IISSite -Name "Site" -PhysicalPath C:\site -BindingInformation "*:81:"
+
+
+$ip = docker inspect -f "{{.NetworkSettings.Networks.nat.IPAddress}}" Tavuk
+Start-Process -FilePath http://$ip
+
+
+echo "<html><body><h1>81 TAVUK 81</h1></body></html>" > "C:\sites\index.html"
+
+
+
+Install-WindowsFeature -Name Web-Mgmt-Tools 
+
+
+net user cem 1q2w3e4r5t6y* /add
+net localgroup administrators cem /add

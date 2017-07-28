@@ -1,0 +1,25 @@
+Download Azure content for docker services and images. 
+afterwards. 
+
+To publish a web service from a random port to outside and deliver this request to internal container's port 80
+
+docker run -d -p 80 --name Pufik microsoft/iis:nanoserver
+to get the internal ip
+docker inspect -f "{{.NetworkSettings.Networks.nat.IPAddress}}" Pufik
+
+To start this internal ip on a web page
+$ip = docker inspect -f "{{.NetworkSettings.Networks.nat.IPAddress}}" Pufik
+Start-Process -FilePath http://$ip
+
+To publish this web service from a spesific port to outside and deliver this request to internal container's port 80
+To get the internal ip
+docker run -d -p 88:80 --name Hayta microsoft/iis:windowsservercore cmd
+To start this internal ip on a web page
+$ip = docker inspect -f "{{.NetworkSettings.Networks.nat.IPAddress}}" Hayta
+Start-Process -FilePath http://$ip
+
+To manage the content
+docker exec -it Hayta powershell
+
+echo "<html><body><h1>88 HAYTA HAYTA HAYTA 88</h1></body></html>" > "c:\inetpub\wwwroot\index.html"
+exit

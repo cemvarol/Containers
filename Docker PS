@@ -1,0 +1,9 @@
+PS C:\Users\cem> docker ps
+CONTAINER ID        IMAGE                             COMMAND                   CREATED             STATUS              PORTS                        NAMES
+74fe8ec15124        microsoft/iis:windowsservercore   "C:\\ServiceMonitor..."   About an hour ago   Up About an hour    80/tcp, 0.0.0.0:80->81/tcp   Tavuk
+af07fe62aadd        microsoft/iis:windowsservercore   "C:\\ServiceMonitor..."   2 hours ago         Up 54 minutes       0.0.0.0:38332->80/tcp        Pufik
+8661e27d8de9        microsoft/iis:windowsservercore   "C:\\ServiceMonitor..."   3 hours ago         Up About an hour    0.0.0.0:88->80/tcp           Hayta
+
+
+
+docker start 8661e27d8de9

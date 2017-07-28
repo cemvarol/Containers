@@ -1,0 +1,40 @@
+docker exec -it Pufik powershell
+
+to find out where you are
+mkdir Pufik
+cd Pufik
+
+Install IIS Management
+Dism /online /enable-feature /featurename:IIS-ManagementService /all
+
+Enable remote access
+New-ItemProperty -Path HKLM:\software\microsoft\WebManagement\Server -Name EnableRemoteManagement -Value 1 -Force
+
+- Stop Services
+net stop Iisadmin
+net stop W3svc
+After this step you will disconnect from console, please start the container again, use the command Docker Start <the id number>
+
+Use 
+docker exec -it Pufik powershell command again to access the command line of container
+
+net stop wmsvc
+
+
+- Start Services
+net start Iisadmin
+net start W3svc
+net start wmsvc
+
+net user cem 1q2w3e4r5t6y* /add
+net localgroup administrators cem /add
+
+run 
+ipconfig to get the ip address 
+use that ip address to access to that container's IIS Console
+
+complete the certificate steps to complete access
+
+
+Web Link 
+https://blogs.msdn.microsoft.com/containerstuff/2017/02/14/manage-iis-on-a-container-with-the-iis-admin-console/

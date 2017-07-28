@@ -1,0 +1,8 @@
+docker run -d -p 80 --name Pufik microsoft/iis:windowsservercore
+
+$ip = docker inspect -f "{{.NetworkSettings.Networks.nat.IPAddress}}" Pufik
+Start-Process -FilePath http://$ip
+
+
+echo "<html><body><h1>Pufik Pufik</h1></body></html>" > "c:\inetpub\wwwroot\index.html"
+exit

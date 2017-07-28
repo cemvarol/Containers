@@ -1,0 +1,13 @@
+Import-module IISAdministration
+
+
+RUN powershell -NoProfile -Command \
+    Import-module IISAdministration; \
+    New-IISSite -Name "Site" -PhysicalPath C:\site -BindingInformation "*:8000:"
+    
+    install telnet
+
+dism /online /Enable-Feature /FeatureName:TelnetClient
+
+Import-Module servermanager
+Add-WindowsFeature telnet-client

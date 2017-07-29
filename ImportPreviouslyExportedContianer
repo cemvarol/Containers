@@ -1,0 +1,27 @@
+Before we take action
+PS C:\Users\Administrator> docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+microsoft/iis       latest              52a0c31aaa72        2 weeks ago         10.5 GB
+
+Now time for action
+
+Copy the exported file to c:\temp folder
+
+To import the image to docker, use the below command.
+docker load –i c:\temp\hayta.tar
+docker load -i c:\temp\hayta.tar
+
+
+docker load – This is the sub-command for docker to import the image.
+-i – To specify the TAR file path.
+
+After you run the commmand it will take about 10-15 mins depending on the content size
+
+you will see this
+
+PS C:\Users\Administrator> docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+cemo/hayta          v3                  82133bfc4360        2 hours ago         10.6 GB
+microsoft/iis       latest              52a0c31aaa72        2 weeks ago         10.5 GB
+PS C:\Users\Administrator>
+

@@ -26,11 +26,15 @@ docker save -o c:\images\haytav4.tar cemo/hayta:v4
 
 web Link
 https://www.assistanz.com/import-and-export-docker-images/
-The image is on
-cvaz07170a@outlook.com ----The that has V3
-images.rar
-cvaz071702@outlook.com ----The that has V4
-imagesV4.rar
+
+the image is on OneDrive
+
+cvaz07170a@outlook.com ----The one that has V3 **** images.rar
+cemo/hayta:v3 ---- HAYTA KEDi PUFiK   Port 80
+
+cvaz071702@outlook.com ----The one that has V4 **** imagesV4.rar
+cemo/hayta:v4 ---- Haytaaaa Pufik     Port 88
+
 usse winrar to extract the image
 http://www.rarlab.com/download.htm
 

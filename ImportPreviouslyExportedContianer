@@ -34,7 +34,13 @@ docker run -d -p 80 --name Pufik cemo/hayta:v3
 Specify Port
 
 docker run -d -p 80:80 --name Hayta cemo/hayta:v3
-docker run -d -p 88:80 --name Hayta2 cemo/hayta:v3
+docker run -d -p 88:80 --name Hayta2 cemo/hayta:v4
+
+PS C:\Users\Administrator> docker ps
+CONTAINER ID        IMAGE               COMMAND                   CREATED             STATUS              PORTS                NAMES
+c05da5b7122b        cemo/hayta:v4       "C:\\ServiceMonitor..."   2 minutes ago       Up 2 minutes        0.0.0.0:88->80/tcp   Hayta2
+8944b2b5315b        cemo/hayta:v3       "C:\\ServiceMonitor..."   3 minutes ago       Up 3 minutes        0.0.0.0:80->80/tcp   Hayta
+
 
 use link for examples
 https://www.assistanz.com/import-and-export-docker-images/

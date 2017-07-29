@@ -21,6 +21,7 @@ microsoft/iis       latest              52a0c31aaa72        2 weeks ago         
 
 export to file
 
+docker save -o c:\images\haytav.tar cemo/hayta:v3
 docker save -o c:\images\haytav4.tar cemo/hayta:v4
 
 

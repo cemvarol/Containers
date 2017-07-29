@@ -1,0 +1,11 @@
+PS C:\Users\Administrator> docker stop 7cf050c2d4f6
+7cf050c2d4f6
+
+PS C:\Users\Administrator> docker commit 7cf050c2d4f6 cemo/hayta:v3
+sha256:82133bfc4360ce98094e5962537b15c8f9404facc5a28fd226e8bc8f63195da8
+
+PS C:\Users\Administrator> docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+cemo/hayta          v3                  82133bfc4360        12 seconds ago      10.6 GB
+microsoft/iis       latest              52a0c31aaa72        2 weeks ago         10.5 GB
+microsoft/iis       windowsservercore   52a0c31aaa72        2 weeks ago         10.5 GB

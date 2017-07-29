@@ -10,6 +10,20 @@ cemo/hayta          v3                  82133bfc4360        12 seconds ago      
 microsoft/iis       latest              52a0c31aaa72        2 weeks ago         10.5 GB
 microsoft/iis       windowsservercore   52a0c31aaa72        2 weeks ago         10.5 GB
 
+PS C:\Users\Administrator> docker commit 8944b2b5315b cemo/hayta:v4
+sha256:82e5a301756593d2d7129f4599ff8a36f1df143841b5981504f27543b6979b92
+
+PS C:\Users\Administrator> docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+cemo/hayta          v4                  82e5a3017565        45 minutes ago      10.7 GB
+cemo/hayta          v3                  82133bfc4360        5 hours ago         10.6 GB
+microsoft/iis       latest              52a0c31aaa72        2 weeks ago         10.5 GB
+
+export to file
+
+docker save -o c:\images\haytav4.tar cemo/hayta:v4
+
+
 web Link
 https://www.assistanz.com/import-and-export-docker-images/
 The image is on

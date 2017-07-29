@@ -10,6 +10,7 @@ Copy the exported file to c:\temp folder
 To import the image to docker, use the below command.
 docker load –i c:\temp\hayta.tar
 docker load –i c:\images\hayta.tar
+docker load -i c:\images\hayta.tar
 
 
 docker load – This is the sub-command for docker to import the image.
@@ -24,4 +25,14 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 cemo/hayta          v3                  82133bfc4360        2 hours ago         10.6 GB
 microsoft/iis       latest              52a0c31aaa72        2 weeks ago         10.5 GB
 PS C:\Users\Administrator>
+
+Rigth after this
+
+Random port
+docker run -d -p 80 --name Pufik cemo/hayta:v3
+
+Specify Port
+
+docker run -d -p 80:80 --name Hayta cemo/hayta:v3
+docker run -d -p 88:80 --name Hayta2 cemo/hayta:v3
 

@@ -9,9 +9,11 @@ Copy the exported file to c:\temp folder
 
 To import the image to docker, use the below command.
 docker load –i c:\temp\hayta.tar
+docker load -i "c:\images\hayta.tar"
+
 docker load –i c:\images\hayta.tar
 docker load -i c:\images\hayta.tar
-
+docker load -i "c:\images\haytav4.tar"
 
 docker load – This is the sub-command for docker to import the image.
 -i – To specify the TAR file path.

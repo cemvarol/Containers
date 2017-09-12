@@ -1,0 +1,10 @@
+o install the NuGet provider, and then press Enter:
+Install-PackageProvider –Name NuGet -Force
+
+o install Docker
+Install-Module -Name DockerMsftProvider -Repository PSGallery -Force
+
+o Install Docker Package
+Install-Package -Name Docker -ProviderName DockerMsftProvider
+
+https://docs.microsoft.com/en-us/powershell/module/packagemanagement/install-packageprovider?view=powershell-5.1

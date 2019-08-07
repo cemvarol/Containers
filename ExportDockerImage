@@ -1,0 +1,44 @@
+EXPORT DOCKER IMAGE
+Get the list of the DOCKER IMAGES
+
+C:\Users\cem>docker images
+
+REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+microsoft/iis                          windowsservercore   9e81a46eef2f        4 weeks ago         4.83GB
+mcr.microsoft.com/windows/servercore   ltsc2019            3e9dc86c64a9        8 weeks ago         5.39GB
+mcr.microsoft.com/windows/nanoserver   1809                e662afff12c3        8 weeks ago         250MB
+mcr.microsoft.com/windows              1809                9a06f3fc0386        8 weeks ago         11.5GB
+
+
+
+
+Export your existing previously downloaded DOCKER IMAGE with a new tag and repository name
+
+the tag you have as microsoft/iis:windowsservercore
+will be saved as cemvarol/iis:cemo01
+
+docker tag microsoft/iis:windowsservercore cemvarol/iis:cemo01
+
+
+Check that an image is created but with the created date 
+as same as microsoft/iis one because it is replica with the new name and tag as cemvarol/iis
+
+C:\Users\cem>docker images
+
+REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+cemvarol/iis                           cemo01              9e81a46eef2f        4 weeks ago         4.83GB
+microsoft/iis                          windowsservercore   9e81a46eef2f        4 weeks ago         4.83GB
+mcr.microsoft.com/windows/servercore   ltsc2019            3e9dc86c64a9        8 weeks ago         5.39GB
+mcr.microsoft.com/windows/nanoserver   1809                e662afff12c3        8 weeks ago         250MB
+mcr.microsoft.com/windows              1809                9a06f3fc0386        8 weeks ago         11.5GB
+
+Login to docker to upload your exported default DOCKER IMAGE
+
+C:\Users\cem>docker login --username cemvarol --password yourpwd
+
+C:\Users\cem>docker push cemvarol/iis:cemo01
+
+
+
+
+

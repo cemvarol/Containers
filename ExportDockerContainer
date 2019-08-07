@@ -1,0 +1,46 @@
+EXPORT YOUR MANAGED DOCKER CONTAINER as a different layer
+
+check your existing image there is no cemvarol/iis:cemo02
+
+C:\Users\cem>docker images
+
+REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+cemvarol/iis                           cemo01              9e81a46eef2f        4 weeks ago         4.83GB
+microsoft/iis                          windowsservercore   9e81a46eef2f        4 weeks ago         4.83GB
+mcr.microsoft.com/windows/servercore   ltsc2019            3e9dc86c64a9        8 weeks ago         5.39GB
+mcr.microsoft.com/windows/nanoserver   1809                e662afff12c3        8 weeks ago         250MB
+mcr.microsoft.com/windows              1809                9a06f3fc0386        8 weeks ago         11.5GB
+
+
+Get the list of your running CONTAINERS
+C:\Users\cem>docker ps
+CONTAINER ID        IMAGE                             COMMAND                   CREATED             STATUS              PORTS                NAMES
+5c9446950134        microsoft/iis:windowsservercore   "C:\\ServiceMonitor.e…"   27 hours ago        Up 20 minutes       0.0.0.0:81->80/tcp   Tomato
+
+STOP THE CONTAINER To export
+C:\Users\cem>docker stop Tomato
+Tomato
+
+This will export the container with the latest layer by updating the repository and tag name
+you wull have cemvarol/iis:cemo02 will be created 
+
+C:\Users\cem>docker commit Tomato cemvarol/iis:cemo02
+sha256:18de7d238c660a98f72cdcdfc4614bfa3274d07aa8eefc1b189837bc0908e7c8
+
+
+
+check that cemo02 is created has 10 seconds life since created, this is a new layer.
+C:\Users\cem>docker images
+
+REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
+cemvarol/iis                           cemo02              18de7d238c66        10 seconds ago      5.02GB
+cemvarol/iis                           cemo01              9e81a46eef2f        4 weeks ago         4.83GB
+microsoft/iis                          windowsservercore   9e81a46eef2f        4 weeks ago         4.83GB
+mcr.microsoft.com/windows/servercore   ltsc2019            3e9dc86c64a9        8 weeks ago         5.39GB
+mcr.microsoft.com/windows/nanoserver   1809                e662afff12c3        8 weeks ago         250MB
+mcr.microsoft.com/windows              1809                9a06f3fc0386        8 weeks ago         11.5GB
+
+
+push this image to docker hub 
+C:\Users\cem>docker push cemvarol/iis:cemo02
+

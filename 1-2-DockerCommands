@@ -1,0 +1,57 @@
+docker pull microsoft/iis:windowsservercore
+
+docker run -d -p 81:80 --name Potato microsoft/iis:windowsservercore
+
+docker exec -it Potato powershell 
+
+echo "<html><body><h1> 81 POTATO Today is Wednesday 29th 81 </h1></body></html>" > "c:\inetpub\wwwroot\index.html"
+
+echo "<html><body><h1> May I go to Kubernetes if you are all ok? PLase say something </h1></body></html>" > "c:\inetpub\wwwroot\index.html"
+
+Install-WindowsFeature -Name Web-Mgmt-Service
+
+
+New-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\WebManagement\Server -Name EnableRemoteManagement -Value 1 -Force
+
+Get-Service -Name WMSVC | Start-Service
+
+net user cem 1q2w3e4r5t6y* /ADD
+net localgroup administrators cem / ADD
+
+
+STOP THE CONTAINER To export
+C:\Users\cem>docker stop Tomato
+Tomato
+
+This will export the container with the latest layer by updating the repository and tag name
+you wull have cemvarol/iis:cemo02 will be created 
+
+C:\Users\cem>docker commit Tomato cemvarol/iis:cemo02
+sha256:18de7d238c660a98f72cdcdfc4614bfa3274d07aa8eefc1b189837bc0908e7c8
+
+
+
+Login to docker to upload your exported default DOCKER IMAGE
+
+C:\Users\cem>docker login --username cemvarol --password yourpwd
+
+C:\Users\cem>docker push cemvarol/iis:cemo01
+
+
+
+push this image to docker hub 
+C:\Users\cem>docker push cemvarol/iis:cemo02
+
+
+
+az acr import -n cvaz012004acr01 --source mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2016 --image windowsservercore-ltsc2016
+
+az acr import -n cvaz012004acr01 --source mcr.microsoft.com/windows/servercore/iis:windowsservercore-ltsc2019 --image windowsservercore-ltsc2019
+
+
+az acr import -n cvaz012004acr01 --source docker.io/cemvarol/iis:cemo14 --image cemo14
+
+
+az group create --name ConRG --location eastus
+
+

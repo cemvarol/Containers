@@ -1,0 +1,25 @@
+az group create --name Containers --location 'EastUS'
+
+A=$(az ad signed-in-user show --query userPrincipalName)
+B=${A:$(echo `expr index "$A" @`)}
+C=${B:: -24}
+D=$(echo "$C"con01)
+E=$(echo "$C"con02)
+
+az storage account create --name $D --resource-group Containers --kind Storage --location EastUS --sku Standard_LRS
+az storage account create --name $E --resource-group Containers --kind Storage --location EastUS --sku Standard_LRS
+
+az network nsg create -g Containers -n ContainNSG
+az network nsg rule create -g Containers --nsg-name ContainNSG -n ConRule --priority 100 --destination-port-ranges "*" --direction Inbound
+
+
+az network vnet create --resource-group Containers --name Con-VNet  --address-prefixes 10.206.0.0/16 --subnet-name SN01 --subnet-prefix 10.206.1.0/24
+
+export SUBNETID=$(az network vnet subnet show --resource-group Containers --vnet-name Con-VNet --name SN01 --query id -o tsv)
+export SUBNETN=$(az network vnet subnet show --resource-group Containers --vnet-name Con-VNet --name SN01 --query name -o tsv)
+
+az network vnet subnet update -g Containers --vnet-name Con-VNet --name $SUBNETN --network-security-group ContainNSG
+
+az vm create --resource-group Containers --name Con-VM01 --location EastUS --image MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:17763.557.20190604 --admin-username cem --admin-password 1q2w3e4r5t6y* --size standard_D4s_v3 --public-ip-address "Con-VM01-Pip" --subnet $SUBNETID --boot-diagnostics-storage $D --license-type Windows_Server --nsg ""
+
+

@@ -1,12 +1,13 @@
-az group create --name Containers --location 'EastUS'
-
-A=$(az ad signed-in-user show --query userPrincipalName)
+a=$(az ad signed-in-user show --query userPrincipalName)
+A=$(echo "$a" | sed -e 's/\(.*\)/\L\1/')
 B=${A:$(echo `expr index "$A" @`)}
 C=${B:: -24}
 D=$(echo "$C"con01)
 E=$(echo "$C"con02)
 RG=Containers
-L=EastUS
+L=EastUS2
+
+az group create --name $RG --location $L
 
 az storage account create --name $D --resource-group $RG --kind Storage --location $L --sku Standard_LRS
 az storage account create --name $E --resource-group $RG --kind Storage --location $L --sku Standard_LRS
